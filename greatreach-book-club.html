@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="GreatReach Book Club connects authors, books, and engaged readers through featured books, author spotlights, discussions, and community experiences.">
+<title>GreatReach Book Club | Connecting Books With Readers</title>
+<style>
+:root {
+  --blue:#0759b8;
+  --blue-dark:#063b78;
+  --blue-soft:#eaf3ff;
+  --navy:#10233f;
+  --ink:#172033;
+  --muted:#667085;
+  --white:#fff;
+  --cream:#f8fbff;
+  --line:#dfe8f2;
+  --shadow:0 18px 50px rgba(10,55,105,.10);
+  --radius:20px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,Arial,Helvetica,sans-serif;color:var(--ink);background:var(--white);line-height:1.65}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.container{width:min(1160px,92%);margin:auto}
+header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{height:82px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{width:48px;height:48px;object-fit:cover;border-radius:50%}
+.brand strong{display:block;font-size:18px;letter-spacing:.04em;color:var(--navy)}
+.brand span{display:block;font-size:10px;letter-spacing:.16em;color:var(--blue);font-weight:700}
+.navlinks{display:flex;align-items:center;gap:28px;font-size:14px;font-weight:600;color:#39475b}
+.navlinks a:hover{color:var(--blue)}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 20px;border-radius:8px;font-weight:700;font-size:14px;transition:.2s ease;cursor:pointer;border:1px solid transparent}
+.btn-primary{background:var(--blue);color:#fff;box-shadow:0 8px 22px rgba(7,89,184,.20)}
+.btn-primary:hover{background:var(--blue-dark);transform:translateY(-1px)}
+.btn-outline{border-color:#b8cbe0;color:var(--blue);background:#fff}
+.btn-outline:hover{border-color:var(--blue);background:var(--blue-soft)}
+.menu{display:none;background:none;border:0;font-size:27px;color:var(--navy)}
+
+.hero{background:linear-gradient(135deg,#f8fbff 0%,#edf6ff 55%,#fff 100%);padding:92px 0 78px;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:70px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;color:var(--blue);font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;margin-bottom:18px}
+.eyebrow:before{content:"";width:28px;height:2px;background:var(--blue)}
+h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(46px,6vw,76px);line-height:1.02;color:var(--navy);letter-spacing:-.035em;margin-bottom:24px}
+.hero p{font-size:18px;color:#58677a;max-width:610px;margin-bottom:30px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.hero-card{position:relative;min-height:500px;display:flex;align-items:center;justify-content:center}
+.hero-orb{position:absolute;width:390px;height:390px;border-radius:50%;background:#d8eaff;right:4%;top:7%}
+.hero-book{position:relative;width:min(330px,80%);aspect-ratio:3/4;z-index:2;background:linear-gradient(145deg,#fff,#dfeeff);border:1px solid #c8d9ec;border-radius:10px;box-shadow:30px 35px 70px rgba(8,54,100,.20);padding:34px;display:flex;flex-direction:column;justify-content:space-between}
+.hero-book .mini{font-size:11px;letter-spacing:.15em;color:var(--blue);font-weight:800;text-transform:uppercase}
+.hero-book h2{font-family:Georgia,serif;font-size:40px;line-height:1.05;color:var(--navy)}
+.hero-book .bottom{font-size:12px;color:#64748b;border-top:1px solid #cbd8e7;padding-top:16px}
+.floating{position:absolute;z-index:4;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);padding:15px 18px;border-radius:13px;font-size:13px;font-weight:700;color:var(--navy)}
+.float-one{left:0;top:18%} .float-two{right:0;bottom:15%}
+
+.trust{padding:30px 0;border-bottom:1px solid var(--line);background:#fff}
+.trust-row{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;text-align:center}
+.trust-item{padding:8px 20px}
+.trust-item strong{display:block;color:var(--navy);font-size:15px}
+.trust-item span{font-size:13px;color:var(--muted)}
+
+section{padding:92px 0}
+.section-head{max-width:700px;margin-bottom:45px}
+.kicker{color:var(--blue);font-size:12px;text-transform:uppercase;letter-spacing:.15em;font-weight:800;margin-bottom:10px}
+h2.section-title{font-family:Georgia,"Times New Roman",serif;font-size:clamp(34px,4vw,52px);line-height:1.08;color:var(--navy);margin-bottom:16px}
+.section-head p{color:var(--muted);font-size:16px}
+.about{background:#fff}
+.about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:center}
+.about-visual{background:linear-gradient(145deg,#0759b8,#0b3970);min-height:420px;border-radius:24px;display:flex;align-items:center;justify-content:center;padding:40px;position:relative;overflow:hidden}
+.about-visual:before,.about-visual:after{content:"";position:absolute;border:1px solid rgba(255,255,255,.18);border-radius:50%}
+.about-visual:before{width:320px;height:320px}
+.about-visual:after{width:450px;height:450px}
+.logo-large{position:relative;z-index:2;background:#fff;padding:14px;border-radius:50%;box-shadow:0 15px 45px rgba(0,0,0,.18)}
+.logo-large img{width:160px;height:160px;border-radius:50%}
+.about-copy p{color:var(--muted);margin-bottom:18px}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}
+.check{display:flex;gap:9px;font-size:14px;font-weight:700;color:#344054}
+.check b{color:var(--blue)}
+
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{border:1px solid var(--line);border-radius:var(--radius);padding:30px;background:#fff;transition:.2s ease}
+.card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:#c6d9ef}
+.icon{width:48px;height:48px;border-radius:12px;background:var(--blue-soft);color:var(--blue);display:grid;place-items:center;font-size:21px;font-weight:900;margin-bottom:20px}
+.card h3{font-family:Georgia,serif;font-size:23px;color:var(--navy);margin-bottom:10px}
+.card p{font-size:14px;color:var(--muted)}
+
+.featured{background:var(--cream)}
+.books{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.book{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 8px 30px rgba(20,60,100,.06)}
+.cover{height:310px;background:linear-gradient(145deg,#e8f3ff,#bcd8f5);display:flex;align-items:center;justify-content:center;padding:35px}
+.cover-inner{width:175px;height:235px;background:#fff;box-shadow:12px 18px 35px rgba(12,45,85,.18);padding:22px;display:flex;flex-direction:column;justify-content:space-between;text-align:center}
+.cover-inner span{font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:var(--blue);font-weight:800}
+.cover-inner strong{font-family:Georgia,serif;font-size:22px;line-height:1.08;color:var(--navy)}
+.book-info{padding:22px}
+.book-info h3{font-family:Georgia,serif;color:var(--navy);font-size:21px}
+.book-info p{font-size:13px;color:var(--muted);margin:7px 0 16px}
+.book-link{color:var(--blue);font-weight:800;font-size:13px}
+
+.programs{background:#fff}
+.program-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.program{border:1px solid var(--line);border-radius:18px;padding:30px;display:flex;gap:20px;align-items:flex-start}
+.program-number{width:42px;height:42px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font-weight:800;flex:none}
+.program h3{font-family:Georgia,serif;color:var(--navy);font-size:22px;margin-bottom:7px}
+.program p{font-size:14px;color:var(--muted)}
+
+.process{background:var(--navy);color:#fff}
+.process .section-title{color:#fff}
+.process .section-head p{color:#b8c5d7}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.step{padding:25px 0;border-top:1px solid rgba(255,255,255,.18)}
+.step span{color:#7bb4f5;font-size:12px;font-weight:800;letter-spacing:.1em}
+.step h3{font-family:Georgia,serif;font-size:21px;margin:14px 0 8px}
+.step p{color:#b8c5d7;font-size:13px}
+
+.authors{background:var(--blue-soft)}
+.author-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center}
+.author-panel{background:#fff;border:1px solid #cfe0f1;border-radius:22px;padding:38px;box-shadow:var(--shadow)}
+.author-panel h3{font-family:Georgia,serif;font-size:30px;color:var(--navy);margin-bottom:14px}
+.author-panel p{color:var(--muted);margin-bottom:22px}
+.author-list{display:grid;gap:12px}
+.author-list div{display:flex;gap:12px;align-items:center;font-size:14px;font-weight:700}
+.author-list i{font-style:normal;width:28px;height:28px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font-size:12px}
+.author-quote{font-family:Georgia,serif;font-size:34px;line-height:1.2;color:var(--navy)}
+.author-quote small{display:block;font-family:Inter,Arial,sans-serif;font-size:13px;color:var(--muted);margin-top:20px}
+
+.contact{background:#fff}
+.contact-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:60px}
+.contact-copy p{color:var(--muted);margin:15px 0 25px}
+.contact-details{display:grid;gap:12px}
+.contact-details div{padding:15px 17px;background:var(--cream);border-radius:10px;font-size:14px}
+.form{border:1px solid var(--line);border-radius:20px;padding:30px;box-shadow:var(--shadow)}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{display:flex;flex-direction:column;gap:7px;margin-bottom:16px}
+.field.full{grid-column:1/-1}
+label{font-size:12px;font-weight:800;color:#344054}
+input,textarea,select{font:inherit;border:1px solid #cbd5e1;border-radius:8px;padding:12px 13px;outline:none;background:#fff}
+input:focus,textarea:focus,select:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(7,89,184,.10)}
+textarea{min-height:135px;resize:vertical}
+
+.cta{padding:70px 0;background:linear-gradient(135deg,var(--blue-dark),var(--blue));color:#fff;text-align:center}
+.cta h2{font-family:Georgia,serif;font-size:clamp(34px,4vw,54px);line-height:1.1;margin-bottom:13px}
+.cta p{max-width:650px;margin:0 auto 24px;color:#d9e9fb}
+.cta .btn-outline{background:#fff;border-color:#fff;color:var(--blue)}
+
+footer{background:#081a31;color:#c5d2e2;padding:45px 0 25px}
+.footer-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:40px;padding-bottom:35px;border-bottom:1px solid rgba(255,255,255,.12)}
+footer .brand strong{color:#fff} footer .brand span{color:#7bb4f5}
+.footer-title{color:#fff;font-weight:800;margin-bottom:12px;font-size:14px}
+footer a,footer p{font-size:13px;color:#aebdd0}
+.footer-links{display:grid;gap:7px}
+.copyright{padding-top:22px;font-size:12px;color:#8193aa;display:flex;justify-content:space-between;gap:15px}
+
+@media(max-width:900px){
+.navlinks{display:none;position:absolute;top:82px;left:0;right:0;background:#fff;border-bottom:1px solid var(--line);padding:18px 4%;flex-direction:column;align-items:flex-start}
+.navlinks.open{display:flex}
+.menu{display:block}
+.hero-grid,.about-grid,.author-grid,.contact-grid{grid-template-columns:1fr}
+.hero{padding-top:65px}
+.hero-card{min-height:420px}
+.cards,.books{grid-template-columns:1fr 1fr}
+.steps{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+.nav{height:72px} .brand img{width:42px;height:42px}
+.brand strong{font-size:15px} .brand span{font-size:8px}
+.hero{padding:55px 0}
+h1{font-size:48px}
+.hero p{font-size:16px}
+.hero-card{min-height:370px}
+.hero-orb{width:290px;height:290px}
+.float-one{left:0;top:8%} .float-two{right:0;bottom:7%}
+.trust-row,.cards,.books,.program-grid,.steps{grid-template-columns:1fr}
+section{padding:70px 0}
+.checks,.form-grid{grid-template-columns:1fr}
+.field.full{grid-column:auto}
+.footer-grid{grid-template-columns:1fr}
+.copyright{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="brand" href="#home">
+      <img src="data:image/jpeg;base64,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" alt="GreatReach Book Club logo">
+      <div><strong>GREATREACH</strong><span>BOOK CLUB</span></div>
+    </a>
+    <button class="menu" aria-label="Open navigation" onclick="toggleMenu()">☰</button>
+    <nav class="navlinks" id="navlinks">
+      <a href="#about">About</a>
+      <a href="#authors">For Authors</a>
+      <a href="#books">Featured Books</a>
+      <a href="#programs">Programs</a>
+      <a href="#contact">Contact</a>
+      <a class="btn btn-primary" href="#contact">Submit a Book</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow">GreatReach Book Club</div>
+      <h1>Where Great Books Find Engaged Readers.</h1>
+      <p>GreatReach brings authors, stories, and readers together through thoughtful book features, author spotlights, reader discussions, and community-centered literary experiences.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#books">Explore Featured Books</a>
+        <a class="btn btn-outline" href="#authors">For Authors</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-orb"></div>
+      <div class="floating float-one">Reader Discussions</div>
+      <div class="floating float-two">Author Features</div>
+      <div class="hero-book">
+        <div class="mini">GreatReach Selection</div>
+        <h2>Stories Worth Sharing.</h2>
+        <div class="bottom">Discover a book. Start a conversation. Reach new readers.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="trust">
+  <div class="container trust-row">
+    <div class="trust-item"><strong>Books & Authors</strong><span>Curated opportunities for discovery</span></div>
+    <div class="trust-item"><strong>Reader Community</strong><span>Conversation beyond the page</span></div>
+    <div class="trust-item"><strong>Thoughtful Features</strong><span>Editorially presented book experiences</span></div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="container about-grid">
+    <div class="about-visual">
+      <div class="logo-large"><img src="data:image/jpeg;base64,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" alt="GreatReach logo"></div>
+    </div>
+    <div class="about-copy">
+      <div class="kicker">About GreatReach</div>
+      <h2 class="section-title">A Book Club Built Around Discovery.</h2>
+      <p>GreatReach Book Club creates a welcoming space where readers can discover compelling books and authors can introduce their work to an interested literary community.</p>
+      <p>Our approach centers on meaningful presentation and reader engagement. We believe a strong book feature should do more than display a cover. It should give readers a reason to pause, explore, and start a conversation.</p>
+      <div class="checks">
+        <div class="check"><b>✓</b> Curated book discovery</div>
+        <div class="check"><b>✓</b> Author spotlights</div>
+        <div class="check"><b>✓</b> Reader discussions</div>
+        <div class="check"><b>✓</b> Community features</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="featured" id="books">
+  <div class="container">
+    <div class="section-head">
+      <div class="kicker">Featured Books</div>
+      <h2 class="section-title">Stories We’re Putting in Front of Readers.</h2>
+      <p>Use this space to showcase current GreatReach selections, featured authors, and books chosen for community discovery.</p>
+    </div>
+    <div class="books">
+      <article class="book">
+        <div class="cover"><div class="cover-inner"><span>Featured Book</span><strong>Your Book Title</strong><span>Author Name</span></div></div>
+        <div class="book-info"><h3>Featured Selection</h3><p>Add the book's short description and why it is being featured.</p><a class="book-link" href="#contact">View Feature →</a></div>
+      </article>
+      <article class="book">
+        <div class="cover"><div class="cover-inner"><span>Author Spotlight</span><strong>Another Story</strong><span>Author Name</span></div></div>
+        <div class="book-info"><h3>Author Spotlight</h3><p>Introduce an author and give readers a clear reason to explore the book.</p><a class="book-link" href="#contact">Meet the Author →</a></div>
+      </article>
+      <article class="book">
+        <div class="cover"><div class="cover-inner"><span>Reader Pick</span><strong>Reader Choice</strong><span>Author Name</span></div></div>
+        <div class="book-info"><h3>Reader Pick</h3><p>Highlight a community favorite or current discussion selection here.</p><a class="book-link" href="#contact">Explore Book →</a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="programs" id="programs">
+  <div class="container">
+    <div class="section-head">
+      <div class="kicker">Book Club Programs</div>
+      <h2 class="section-title">More Than a Book Listing.</h2>
+      <p>GreatReach can create multiple ways for a book to enter the conversation and remain visible to interested readers.</p>
+    </div>
+    <div class="program-grid">
+      <div class="program"><div class="program-number">01</div><div><h3>Featured Book</h3><p>A focused presentation that introduces a selected book to the GreatReach community.</p></div></div>
+      <div class="program"><div class="program-number">02</div><div><h3>Author Spotlight</h3><p>A dedicated space to introduce the author, their work, and the story behind the book.</p></div></div>
+      <div class="program"><div class="program-number">03</div><div><h3>Reader Discussion</h3><p>Discussion prompts and conversation themes that encourage readers to engage with the story.</p></div></div>
+      <div class="program"><div class="program-number">04</div><div><h3>Community Events</h3><p>Use this area for upcoming book-club conversations, author appearances, virtual events, and special selections.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="process">
+  <div class="container">
+    <div class="section-head">
+      <div class="kicker">How It Works</div>
+      <h2 class="section-title">A Simple Path From Book to Reader Conversation.</h2>
+      <p>Keep the experience clear for both authors and readers.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><span>STEP 01</span><h3>Submit</h3><p>Share your book and author information with GreatReach.</p></div>
+      <div class="step"><span>STEP 02</span><h3>Review</h3><p>We review the book information and identify an appropriate feature format.</p></div>
+      <div class="step"><span>STEP 03</span><h3>Feature</h3><p>The selected book receives a polished community-facing presentation.</p></div>
+      <div class="step"><span>STEP 04</span><h3>Engage</h3><p>Readers can explore, discuss, and continue the conversation around the book.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="authors" id="authors">
+  <div class="container author-grid">
+    <div>
+      <div class="kicker">For Authors</div>
+      <h2 class="section-title">Introduce Your Book to Readers Who Love Discovering New Stories.</h2>
+      <p style="color:#667085;max-width:600px;margin-bottom:25px;">GreatReach gives authors a clear place to present their work, participate in literary conversation, and connect their books with a community built around reading.</p>
+      <a class="btn btn-primary" href="#contact">Submit Your Book</a>
+    </div>
+    <div class="author-panel">
+      <h3>What Authors Can Share</h3>
+      <p>Give readers enough context to understand the story and enough personality to want to learn more.</p>
+      <div class="author-list">
+        <div><i>✓</i> Book cover and description</div>
+        <div><i>✓</i> Author biography and introduction</div>
+        <div><i>✓</i> Discussion questions or themes</div>
+        <div><i>✓</i> Links to purchase or learn more</div>
+        <div><i>✓</i> Optional author Q&A content</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="container contact-grid">
+    <div class="contact-copy">
+      <div class="kicker">Contact GreatReach</div>
+      <h2 class="section-title">Let’s Put Your Book in the Conversation.</h2>
+      <p>Authors, publishers, readers, and community partners can use the form to contact GreatReach about book features, submissions, discussions, and collaborations.</p>
+      <div class="contact-details">
+        <div><strong>Book submissions</strong><br>Send your title and basic book information.</div>
+        <div><strong>Author inquiries</strong><br>Ask about features and community opportunities.</div>
+        <div><strong>Book club inquiries</strong><br>Discuss events, discussions, and collaborations.</div>
+      </div>
+    </div>
+    <form class="form" action="mailto:greatreachbookclub@example.com" method="post" enctype="text/plain">
+      <div class="form-grid">
+        <div class="field"><label for="name">Full Name</label><input id="name" name="name" type="text" required placeholder="Your name"></div>
+        <div class="field"><label for="email">Email Address</label><input id="email" name="email" type="email" required placeholder="you@example.com"></div>
+        <div class="field"><label for="book">Book / Project</label><input id="book" name="book" type="text" placeholder="Book title"></div>
+        <div class="field"><label for="reason">Inquiry Type</label><select id="reason" name="reason"><option>Book Submission</option><option>Author Feature</option><option>Reader Inquiry</option><option>Book Club / Event</option><option>Other</option></select></div>
+        <div class="field full"><label for="message">Message</label><textarea id="message" name="message" required placeholder="Tell us about your book or inquiry..."></textarea></div>
+      </div>
+      <button class="btn btn-primary" type="submit">Send Inquiry</button>
+    </form>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="container">
+    <h2>Great Stories Deserve Great Reach.</h2>
+    <p>Whether you are an author looking for a thoughtful feature or a reader looking for your next book, GreatReach is built to bring the two together.</p>
+    <a class="btn btn-outline" href="#contact">Connect With GreatReach</a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="#home">
+          <img src="data:image/jpeg;base64,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" alt="GreatReach logo">
+          <div><strong>GREATREACH</strong><span>BOOK CLUB</span></div>
+        </a>
+        <p style="margin-top:15px;max-width:350px;">A reader-focused book club connecting stories, authors, and meaningful literary conversation.</p>
+      </div>
+      <div>
+        <div class="footer-title">Explore</div>
+        <div class="footer-links"><a href="#about">About</a><a href="#books">Featured Books</a><a href="#programs">Programs</a><a href="#authors">For Authors</a></div>
+      </div>
+      <div>
+        <div class="footer-title">Connect</div>
+        <div class="footer-links"><a href="#contact">Contact</a><a href="#contact">Submit a Book</a><a href="#contact">Book Club Inquiry</a></div>
+      </div>
+    </div>
+    <div class="copyright"><span>© 2026 GreatReach Book Club. All rights reserved.</span><span>Connecting books with readers.</span></div>
+  </div>
+</footer>
+
+<script>
+function toggleMenu(){
+  document.getElementById('navlinks').classList.toggle('open');
+}
+document.querySelectorAll('.navlinks a').forEach(a => a.addEventListener('click', () => {
+  document.getElementById('navlinks').classList.remove('open');
+}));
+</script>
+</body>
+</html>
